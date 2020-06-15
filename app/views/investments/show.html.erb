@@ -1,0 +1,34 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Investor company:</strong>
+  <%= @investment.investor_id %>
+</p>
+
+<p>
+  <strong>Invested company:</strong>
+  <%= @investment.invested_id %>
+</p>
+
+<p>
+  <strong>Value:</strong>
+  <%= @investment.value %>
+</p>
+
+<p>
+  <strong>Funds:</strong>
+  <%= @investment.funds %>
+</p>
+
+<p>
+  <strong>Investment date:</strong>
+  <%= @investment.investment_date %>
+</p>
+
+<p>
+  <strong>Anomalous:</strong>
+  <%= @investment.anomalous %>
+</p>
+
+<%= link_to 'Edit', edit_investment_path(@investment) %> |
+<%= link_to 'Back', investments_path %>

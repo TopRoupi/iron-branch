@@ -1,0 +1,23 @@
+# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  name: MyString
+  cnpj: MyString
+  type: 
+  email: MyString
+  telephone: MyString
+  cep: MyString
+  capital: 1.5
+  last_capital_modification: 2020-06-07
+  status: MyString
+
+two:
+  name: MyString
+  cnpj: MyString
+  type: 
+  email: MyString
+  telephone: MyString
+  cep: MyString
+  capital: 1.5
+  last_capital_modification: 2020-06-07
+  status: MyString
