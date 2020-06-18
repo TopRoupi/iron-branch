@@ -1,0 +1,29 @@
+= form_with(model: investment, local: true) do |form|
+  - if investment.errors.any?
+    #error_explanation
+      h2
+        = pluralize(investment.errors.count, "error")
+        | prohibited this investment from being saved:
+      ul
+        - investment.errors.full_messages.each do |message|
+          li= message
+  .field
+    = form.label :investor_id
+    = form.text_field :investor_id
+  .field
+    = form.label :invested_id
+    = form.text_field :invested_id
+  .field
+    = form.label :value
+    = form.text_field :value
+  .field
+    = form.label :funds
+    = form.text_field :funds
+  .field
+    = form.label :investment_date
+    = form.date_select :investment_date
+  .field
+    = form.label :anomalous
+    = form.check_box :anomalous
+  .actions
+    = form.submit

@@ -1,0 +1,25 @@
+doctype html
+html
+  head
+    meta content=("text/html; charset=UTF-8") http-equiv="Content-Type" /
+    title IronBranch
+    = csrf_meta_tags
+    = csp_meta_tag
+    = stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload'
+    = stylesheet_pack_tag 'application', media: 'all', 'data-turbolinks-track': 'reload'
+    = javascript_pack_tag 'application', 'data-turbolinks-track': 'reload'
+  body
+    = render "layouts/nav_bar"
+      span aria-hidden="true"  ×
+    div.container style="margin-top: 30px;"
+      - if notice
+        div.alert.alert-info
+          = notice
+          button.close aria-label="Close" data-dismiss="alert" type="button"
+            span aria-hidden="true"  ×
+      - if alert
+        div.alert.alert-danger
+          = alert
+          button.close aria-label="Close" data-dismiss="alert" type="button"
+            span aria-hidden="true"  ×
+      = yield

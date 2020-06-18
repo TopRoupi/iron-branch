@@ -11,6 +11,10 @@
 # ├──────────├───────────├─50%─>>>>> Company_D
 # 
 
+# a->b
+# a->b * (b->c/100), b->c
+# a->b * (b->c * (c->d)), b->c * (c->d/100), c->d 
+
 # name: 'company_a'
 # capital: 100
 # investments:

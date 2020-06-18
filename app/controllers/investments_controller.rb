@@ -15,6 +15,8 @@ class InvestmentsController < ApplicationController
   # GET /investments/new
   def new
     @investment = Investment.new
+    @investment.investor_id = params[:investor_id]
+    @investment.invested_id = params[:invested_id]
   end
 
   # GET /investments/1/edit

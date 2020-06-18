@@ -1,0 +1,38 @@
+= form_with(model: company, local: true) do |form|
+  - if company.errors.any?
+    #error_explanation
+      h2
+        = pluralize(company.errors.count, "error")
+        | prohibited this company from being saved:
+      ul
+        - company.errors.full_messages.each do |message|
+          li= message
+  .field
+    = form.label :name
+    = form.text_field :name
+  .field
+    = form.label :cnpj
+    = form.text_field :cnpj
+  .field
+    = form.label :constitution
+    = form.text_field :constitution
+  .field
+    = form.label :email
+    = form.text_field :email
+  .field
+    = form.label :telephone
+    = form.text_field :telephone
+  .field
+    = form.label :cep
+    = form.text_field :cep
+  .field
+    = form.label :capital
+    = form.text_field :capital
+  .field
+    = form.label :last_capital_modification
+    = form.date_select :last_capital_modification
+  .field
+    = form.label :status
+    = form.text_field :status
+  .actions
+    = form.submit

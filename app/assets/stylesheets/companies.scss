@@ -1,3 +1,30 @@
 // Place all the styles related to the companies controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: https://sass-lang.com/
+
+
+ul.nested {
+  border-left: 2px solid;
+}
+
+ul.nested li {
+  padding-left: 55px;
+  border-bottom: 0px;
+}
+
+.participation {
+  position: absolute;
+  left: 5px;
+  font-size: 10px;
+  color: #4d4d4d !important;
+}
+
+ul.list-group-flush li {
+  padding-right: 0px;
+  padding-top: 0px;
+  padding-bottom: 0px;
+}
+
+ul.list-group-flush li a, ul.list-group-nested li a{
+  color: black;
+}

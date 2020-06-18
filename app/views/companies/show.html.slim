@@ -1,0 +1,38 @@
+p#notice= notice
+p
+  strong Name:
+  = @company.name
+p
+  strong Cnpj:
+  = @company.cnpj
+p
+  strong Constitution:
+  = @company.constitution
+p
+  strong Email:
+  = @company.email
+p
+  strong Telephone:
+  = @company.telephone
+p
+  strong Cep:
+  = @company.cep
+p
+  strong Capital:
+  = @company.capital
+p
+  strong Last capital modification:
+  = @company.last_capital_modification
+p
+  strong Status:
+  = @company.status
+p
+  strong Investments tree:
+  ul.list-group.list-group-flush
+    = raw html_down_tree(@company)
+
+
+
+= link_to 'Edit', edit_company_path(@company)
+| \
+= link_to 'Back', companies_path

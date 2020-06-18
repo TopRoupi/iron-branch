@@ -1,0 +1,22 @@
+p#notice= notice
+p
+  strong Investor company:
+  = @investment.investor_id
+p
+  strong Invested company:
+  = @investment.invested_id
+p
+  strong Value:
+  = @investment.value
+p
+  strong Funds:
+  = @investment.funds
+p
+  strong Investment date:
+  = @investment.investment_date
+p
+  strong Anomalous:
+  = @investment.anomalous
+= link_to 'Edit', edit_investment_path(@investment)
+| \
+= link_to 'Back', investments_path

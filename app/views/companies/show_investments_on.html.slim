@@ -1,0 +1,17 @@
+h1 = "#{@company.name} investments on #{@invested.name}"
+
+br
+
+- @investments.each do |investment|
+  - @investment = investment
+  == render 'investments/investment_card'
+
+a.btn.btn-outline-secondary.float-right href="#{new_investment_path(invested_id: @invested.id, investor_id: @company.id)}" Add a new investment
+
+br
+br
+
+p.font-weight-bold = "Invested capital: #{@invested.capital}"
+p.font-weight-bold = "Invested capital with investors capital: #{@invested.total_capital}"
+p.font-weight-bold = "Investor total investments value: #{@company.participation_value_on(@invested)}"
+p.font-weight-bold = "Participation percentage: #{@company.participation_percentage_on(@invested)}"

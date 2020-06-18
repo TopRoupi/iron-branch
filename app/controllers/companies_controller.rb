@@ -1,5 +1,5 @@
 class CompaniesController < ApplicationController
-  before_action :set_company, only: [:show, :edit, :update, :destroy]
+  before_action :set_company, only: [:show, :edit, :update, :destroy, :show_investments_on]
 
   # GET /companies
   # GET /companies.json
@@ -10,6 +10,12 @@ class CompaniesController < ApplicationController
   # GET /companies/1
   # GET /companies/1.json
   def show
+  end
+
+  # GET /companies/1/investments-on/2
+  def show_investments_on
+    @invested = Company.find(params[:invested_id])
+    @investments = @company.investments.where(invested: @invested)
   end
 
   # GET /companies/new

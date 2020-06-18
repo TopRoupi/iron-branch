@@ -1,0 +1,26 @@
+p#notice= notice
+h1 Investments
+table
+  thead
+    tr
+      th Investor company
+      th Invested company
+      th Value
+      th Funds
+      th Investment date
+      th Anomalous
+      th colspan="3" 
+  tbody
+    - @investments.each do |investment|
+      tr
+        td= investment.investor_id
+        td= investment.invested_id
+        td= investment.value
+        td= investment.funds
+        td= investment.investment_date
+        td= investment.anomalous
+        td= link_to 'Show', investment
+        td= link_to 'Edit', edit_investment_path(investment)
+        td= link_to 'Destroy', investment, method: :delete, data: { confirm: 'Are you sure?' }
+br/
+= link_to 'New Investment', new_investment_path
