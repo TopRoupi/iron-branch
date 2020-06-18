@@ -1,4 +1,7 @@
-h1 = "#{@company.name} investments on #{@invested.name}"
+h1 
+  = link_to @company.name, @company
+  |  investments on 
+  = link_to @invested.name, @invested
 
 br
 
@@ -11,7 +14,7 @@ a.btn.btn-outline-secondary.float-right href="#{new_investment_path(invested_id:
 br
 br
 
-p.font-weight-bold = "Invested capital: #{@invested.capital}"
-p.font-weight-bold = "Invested capital with investors capital: #{@invested.total_capital}"
-p.font-weight-bold = "Investor total investments value: #{@company.participation_value_on(@invested)}"
-p.font-weight-bold = "Participation percentage: #{@company.participation_percentage_on(@invested)}"
+p.font-weight-bold = "#{@invested.name} capital: #{@invested.capital}"
+p.font-weight-bold = "#{@invested.name} capital with investors capital: #{@invested.total_capital}"
+p.font-weight-bold = "#{@company.name} investments on #{@invested.name}  total value: #{@company.participation_value_on(@invested)}"
+p.font-weight-bold = "#{@company.name} participation percentage: #{@company.participation_percentage_on(@invested)}"

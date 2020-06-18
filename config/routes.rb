@@ -1,5 +1,5 @@
 Rails.application.routes.draw do
-  resources :investments
+  resources :investments, except: [:index, :edit, :update]
   resources :companies
 
   get 'home/index'

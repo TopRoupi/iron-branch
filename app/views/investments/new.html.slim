@@ -1,3 +1,7 @@
-h1 New Investment
+h1
+  | New Investment of 
+  = link_to @investor.name, @investor
+  |  on 
+  = link_to @invested.name, @invested
+
 = render 'form', investment: @investment
-= link_to 'Back', investments_path
