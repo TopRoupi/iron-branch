@@ -1,5 +1,5 @@
-div.card.bg-light
-  div.card-body
+.card.bg-light
+  .card-body
     p.card-text
       strong value: 
       = @investment.value
@@ -12,7 +12,7 @@ div.card.bg-light
     p.card-text
       strong anomalus: 
       = @investment.anomalous
-  div.card-footer
+  .card-footer
     ul.nav.nav-pills.card-footer-pills.justify-content-center
       li.nav-item
         = link_to 'Show', @investment, class: 'nav-link'

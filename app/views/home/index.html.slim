@@ -8,3 +8,12 @@
       a.list-group-item.list-group-item-action href="https://github.com/TopRoupi/iron-branch"
         = octicon "mark-github", :height => 18 
         |  Github
+
+.card.bg-light
+  .card-header.text-center Latest pages visited
+  .card-body.text-center
+    - session[:history].reverse_each do |url|
+      = link_to url, url
+      br
+br
+br
