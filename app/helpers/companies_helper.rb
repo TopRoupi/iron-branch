@@ -2,7 +2,7 @@ module CompaniesHelper
   def html_down_tree(company, invested = nil)
     if company.invested_companies == []
       return "<li id='comp-#{company.id}' class='list-group-item'>"\
-             "a href='/companies/#{company.id}'>#{company.name}</a>"\
+             "<a href='/companies/#{company.id}'>#{company.name}</a>"\
              "</li>"
     end
 
