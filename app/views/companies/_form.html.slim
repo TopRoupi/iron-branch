@@ -1,4 +1,4 @@
-= simple_form_for @company, wrapper: :vertical_form  do |f|
+= simple_form_for @company, wrapper: :vertical_form do |f|
   = f.error_notification
   = f.error_notification message: f.object.errors[:base].to_sentence if f.object.errors[:base].present?
 
@@ -17,4 +17,3 @@
   = f.input :last_capital_modification
 
   = f.submit class: 'btn btn-primary float-right'
-

@@ -1,0 +1,42 @@
+hr
+
+= form_tag companies_path, method: :get, id: 'search-form'
+  .row.no-gutters
+    .col
+      = text_field_tag :search, params[:search], class: "form-control py-2 border-right-0 border", type: 'search', placeholder: 'search by name, email, cnpj, telephone or cep', autocomplete: "off", autofocus: 'true', style: 'border-radius: 0.25rem 0rem 0rem 0.25rem;'
+    .col-auto
+      button.btn.btn-outline.rounded-0.border type='button' onclick="window.location.href='#{companies_path}'"
+        = octicon "x"
+    .col-auto
+      button#submit-btn.btn.btn-outline.border-left-0.border type="submit" default='true' style="border-radius: 0rem 0.25rem 0.25rem 0rem;"
+        = octicon "search"
+    .col-auto
+      a#ad-btn.btn.border style="margin-left: 10px" data-toggle="collapse" data-target="#ad-opt" href="#ad-opt" aria-controls="#ad-opt"
+        = octicon "tools"
+
+  .collapse id="ad-opt"
+    br
+    .form-group.row data-controller="company_advanced_search"
+      = label_tag :status, "Capital", class: 'col-sm-2 col-form-label'
+      .col-sm-10
+        .input-group 
+          .input-group-btn.search-panel
+            button.btn.btn-default.dropdown-toggle.border data-toggle="dropdown" type="button" style='border-radius: 0.25rem 0rem 0rem 0.25rem;'
+              span#search_concept Filter by
+              span.caret
+            .dropdown-menu
+              a#greather.dropdown-item href="#>" Greather than
+              a#less.dropdown-item href="#<" Less than
+              a#equals.dropdown-item href="#=" Equals
+          = hidden_field_tag :capital_param, params[:capital_param]
+          = number_field_tag :capital, params[:capital], class: 'form-control', autocomplete: "off"
+    .form-group.row
+      .col-sm-2 Constitution
+      .col-sm-10
+          = select_tag :constitution, options_for_select(Company.constitutions), class: 'form-control', include_blank: true
+    .form-group.row
+      .col-sm-2 Status
+      .col-sm-10
+          = select_tag :status, options_for_select(Company.statuses), class: 'form-control', include_blank: true
+
+hr

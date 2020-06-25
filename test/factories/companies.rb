@@ -4,7 +4,7 @@ FactoryBot.define do
     cnpj { Faker::Company.brazilian_company_number }
     constitution { 'ltda' }
     email { Faker::Internet.email }
-    telephone { '99999999999' }
+    telephone { rand(100_000_000..999_999_999).to_s }
     cep { Faker::Address.zip_code }
     capital { rand(100000) }
     last_capital_modification { Time.now.strftime("%d/%m/%Y") }

@@ -1,0 +1,40 @@
+.card.bg-light
+  .card-body
+    p.card-text
+      strong name: 
+      = @company.name
+      span.float-right class=(@company.status == 'active' ? 'text-success' : 'text-danger' )
+        = @company.status
+    p.card-text
+      strong cnpj: 
+      = @company.cnpj
+      a.float-right data-toggle="collapse" href="#comp-#{@company.id}-data" role="button" aria-expanded="false" aria-controls="#comp-#{@company.id}-data"
+        | expand
+    .collapse id="comp-#{@company.id}-data"
+      p.card-text
+        strong constitution: 
+        = @company.constitution
+      p.card-text
+        strong email: 
+        = @company.email
+      p.card-text
+        strong telephone:
+        = @company.telephone
+      p.card-text
+        strong cep: 
+        = @company.cep
+      p.card-text
+        strong capital: 
+        = @company.capital
+      p.card-text
+        strong last_capital_modification: 
+        = @company.last_capital_modification
+  .card-footer
+    ul.nav.nav-pills.card-footer-pills.justify-content-center
+      li.nav-item
+        = link_to 'Show', @company, class: 'nav-link footer-link'
+      li.nav-item
+        = link_to 'Edit', edit_company_path(@company)
+      li.nav-item
+        = link_to 'Destroy', @company, method: :delete, data: { confirm: 'Are you sure?' }, class: 'nav-link footer-link'
+br

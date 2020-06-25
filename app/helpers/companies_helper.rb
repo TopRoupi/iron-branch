@@ -11,7 +11,7 @@ module CompaniesHelper
     tree += "<a href='/companies/#{company.id}'>#{company.name}</a>"
     tree += '<ul class="list-group list-group-flush nested">'
 
-    company.unique_companies_investments.map do |investments|
+    company.unique_invested_companies_investments.map do |investments|
       sub_company = investments[0].invested
       if investments[0].anomalous == true
         tree += "<li id='comp-#{company.id}'"

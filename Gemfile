@@ -24,6 +24,7 @@ gem 'octicons_helper'
 
 gem 'simple_form'
 
+gem 'textacular', '~> 5.0'
 
 # Use Redis adapter to run Action Cable in production
 # gem 'redis', '~> 4.0'
@@ -43,6 +44,7 @@ group :development, :test do
   gem 'faker', :git => 'https://github.com/faker-ruby/faker.git', :branch => 'master'
   gem 'minitest-reporters'
   gem 'shoulda-context'
+  gem 'rails-controller-testing'
 end
 
 group :development do

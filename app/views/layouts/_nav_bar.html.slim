@@ -6,3 +6,8 @@ nav.navbar.navbar-expand-lg.navbar-light.bg-light
     ul.navbar-nav
       li.nav-item
         a.nav-link href="/companies" Companies
+    ul.navbar-nav.ml-auto
+      li.nav-item
+          span.switch.nav-link.switch-sm data-controller="darkmode"
+            input.switch#switch-id type="checkbox" data-target="darkmode.darkswitch" data-action="click->darkmode#switch"
+            label for="switch-id" style="font-size: 17px; margin: 0px;" Dark mode

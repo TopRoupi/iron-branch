@@ -24,7 +24,6 @@ class InvestmentsController < ApplicationController
     session[:return_to] = request.referer
   end
 
-
   # POST /investments
   # POST /investments.json
   def create

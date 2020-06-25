@@ -4,7 +4,18 @@ class CompaniesController < ApplicationController
   # GET /companies
   # GET /companies.json
   def index
-    @companies = Company.all
+    @companies = if params[:search].blank?
+      Company.all
+    else
+      Company.search params[:search]
+    end
+
+    @companies.where!(constitution: params[:constitution]) unless params[:constitution].blank?
+    @companies.where!(status: params[:status]) unless params[:status].blank?
+
+    unless params[:capital_param].blank? or params[:capital].blank?
+      @companies.where!("capital #{params[:capital_param]} #{params[:capital]}")
+    end
   end
 
   # GET /companies/1
@@ -34,7 +45,7 @@ class CompaniesController < ApplicationController
 
     respond_to do |format|
       if @company.save
-        format.html { redirect_to @company, notice: 'Company was successfully created.' }
+        format.html { redirect_to companies_url, notice: 'Company was successfully created.' }
         format.json { render :show, status: :created, location: @company }
       else
         format.html { render :new }
@@ -48,7 +59,7 @@ class CompaniesController < ApplicationController
   def update
     respond_to do |format|
       if @company.update(company_params)
-        format.html { redirect_to @company, notice: 'Company was successfully updated.' }
+        format.html { redirect_to companies_url, notice: 'Company was successfully updated.' }
         format.json { render :show, status: :ok, location: @company }
       else
         format.html { render :edit }

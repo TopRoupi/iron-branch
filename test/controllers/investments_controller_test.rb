@@ -5,13 +5,12 @@ class InvestmentsControllerTest < ActionDispatch::IntegrationTest
     @investment = create :investment
   end
 
-  test "should get index" do
-    get investments_url
-    assert_response :success
-  end
-
   test "should get new" do
-    get new_investment_url
+    get new_investment_url,
+      params: {
+        investor_id: @investment.investor_id,
+        invested_id: @investment.invested_id
+      }
     assert_response :success
   end
 
@@ -28,21 +27,11 @@ class InvestmentsControllerTest < ActionDispatch::IntegrationTest
     assert_response :success
   end
 
-  test "should get edit" do
-    get edit_investment_url(@investment)
-    assert_response :success
-  end
-
-  test "should update investment" do
-    patch investment_url(@investment), params: { investment: { anomalous: @investment.anomalous, invested_id: @investment.invested_id, investment_date: @investment.investment_date, investor_id: @investment.investor_id, funds: @investment.funds, value: @investment.value } }
-    assert_redirected_to investment_url(@investment)
-  end
-
   test "should destroy investment" do
     assert_difference('Investment.count', -1) do
       delete investment_url(@investment)
     end
 
-    assert_redirected_to investments_url
+    assert_redirected_to root_path
   end
 end

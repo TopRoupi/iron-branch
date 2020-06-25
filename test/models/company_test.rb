@@ -27,7 +27,17 @@ class CompanyTest < ActiveSupport::TestCase
     assert_includes(@company.invested_companies, invested_a, invested_b)
   end
 
-  test '#unique_companies_investments should return a list with the investments per company invested' do
+  test '#investors_companies should return the list with the investors companies' do
+    investor_a = create :company
+    investor_b = create :company
+
+    create :investment, investor: investor_a, invested: @company
+    create :investment, investor: investor_b, invested: @company
+
+    assert_includes(@company.investors_companies, investor_a, investor_b)
+  end
+
+  test '#unique_invested_companies_investments should return a list with the investments per company invested' do
     invested_a = create :company
     invested_b = create :company
 
@@ -37,9 +47,24 @@ class CompanyTest < ActiveSupport::TestCase
     create :investment, investor: @company, invested: invested_b
     create :investment, investor: @company, invested: invested_b
 
-    assert_includes(@company.unique_companies_investments,
+    assert_includes(@company.unique_invested_companies_investments,
                     @company.investments.where(invested: invested_a),
                     @company.investments.where(invested: invested_b),)
+  end
+
+  test '#unique_investor_companies_investments should return a list with the investments per investor company' do
+    investor_a = create :company
+    investor_b = create :company
+
+    create :investment, investor: investor_a, invested: @company
+    create :investment, investor: investor_a, invested: @company
+
+    create :investment, investor: investor_b, invested: @company
+    create :investment, investor: investor_b, invested: @company
+
+    assert_includes(@company.unique_investor_companies_investments,
+                    @company.investors.where(investor: investor_a),
+                    @company.investors.where(investor: investor_b),)
   end
 
   test '#total_capital should return the capital plus the sum of investors investments on the company' do
@@ -68,5 +93,19 @@ class CompanyTest < ActiveSupport::TestCase
     create :investment, investor: @company, invested: invested, value: 500
 
     assert_equal(@company.participation_value_on(invested), 1000)
+  end
+
+  test "#sufixed_name should return name plus the constitution" do
+    assert_equal(@company.sufixed_name, "#{@company.name} #{@company.constitution}")
+  end
+
+  test "#search should search agaist every string column" do
+    columns = Company.columns.filter { |column| column.type == :string }
+
+    columns.each do |column|
+      column = @company.send(column.name)
+
+      assert_includes(Company.search(column), @company)
+    end
   end
 end

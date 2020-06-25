@@ -33,3 +33,12 @@
   heroku git:remote -a iron-branch
   git push origin heroku
   ```
+
+### todo list
+
+- [ ] Pagination on company index
+- [ ] Pagination on company investments_on
+- [ ] companies#new_invested_invesment controller 
+- [ ] companies#new_investor_invesment controller 
+- [ ] mark anomalous when creating a circular investment 
+- [ ] update anomalous when creating or updating companies investments 
