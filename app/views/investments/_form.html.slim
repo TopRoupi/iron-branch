@@ -2,8 +2,15 @@
   = f.error_notification
   = f.error_notification message: f.object.errors[:base].to_sentence if f.object.errors[:base].present?
 
-  = f.input :investor_id, as: :hidden
-  = f.input :invested_id, as: :hidden
+  - if @investment.investor_id
+    = f.input :investor_id, as: :hidden
+  - else
+    = f.input :investor_id, label: 'Investor cnpj', url: autocomplete_company_cnpj_companies_path, as: :autocomplete
+
+  - if @investment.invested_id
+    = f.input :invested_id, as: :hidden
+  - else
+    = f.input :invested_id, label: 'Invested cnpj', url: autocomplete_company_cnpj_companies_path, as: :autocomplete
 
   .row
     .col-lg-6.col-sm-6.col-12

@@ -36,8 +36,8 @@
 
 ### todo list
 
-- [ ] Pagination on company index
-- [ ] Pagination on company investments_on
+- [x] Pagination on company index
+- [x] Pagination on company investments_on
 - [ ] companies#new_invested_invesment controller 
 - [ ] companies#new_investor_invesment controller 
 - [ ] mark anomalous when creating a circular investment 

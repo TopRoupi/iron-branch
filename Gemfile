@@ -20,11 +20,17 @@ gem 'jbuilder', '~> 2.7'
 
 gem 'slim-rails'
 
-gem 'octicons_helper'
+gem 'octicons_helper', '~> 10.0.0'
 
 gem 'simple_form'
 
 gem 'textacular', '~> 5.0'
+
+gem 'will_paginate', '~> 3.1.0'
+
+gem 'rails-jquery-autocomplete'
+
+gem 'jquery-ui-rails'
 
 # Use Redis adapter to run Action Cable in production
 # gem 'redis', '~> 4.0'

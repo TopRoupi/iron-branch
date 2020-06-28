@@ -1,5 +1,7 @@
 class CompaniesController < ApplicationController
-  before_action :set_company, only: [:show, :edit, :update, :destroy, :show_investments_on]
+  before_action :set_company, only: [:show, :edit, :update, :destroy, :show_investments_on, :new_investment]
+  autocomplete :company, :name, full: true
+  autocomplete :company, :cnpj, full: false
 
   # GET /companies
   # GET /companies.json
@@ -16,6 +18,8 @@ class CompaniesController < ApplicationController
     unless params[:capital_param].blank? or params[:capital].blank?
       @companies.where!("capital #{params[:capital_param]} #{params[:capital]}")
     end
+
+    @companies = @companies.paginate(page: params[:page], per_page: 10)
   end
 
   # GET /companies/1
@@ -27,11 +31,25 @@ class CompaniesController < ApplicationController
   def show_investments_on
     @invested = Company.find(params[:invested_id])
     @investments = @company.investments.where(invested: @invested)
+    @investments = @investments.paginate(page: params[:page], per_page: 10)
   end
 
   # GET /companies/new
   def new
     @company = Company.new
+  end
+
+  # GET /companies/1/new_investment/(investor/invested)
+  def new_investment
+    @investment = Investment.new
+
+    if params[:type] == 'investor'
+      @investment.invested = @company
+    else
+      @investment.investor = @company
+    end
+
+    session[:return_to] = request.referer
   end
 
   # GET /companies/1/edit

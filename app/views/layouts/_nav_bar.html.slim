@@ -4,8 +4,11 @@ nav.navbar.navbar-expand-lg.navbar-light.bg-light
     span.navbar-toggler-icon
   #navbarNav.collapse.navbar-collapse
     ul.navbar-nav
-      li.nav-item
-        a.nav-link href="/companies" Companies
+      li.nav-item.dropdown
+        a.nav-link.dropdown-toggle role="button" data-toggle="dropdown" Companies
+        .dropdown-menu
+          a.dropdown-item href="#{companies_path}" Index
+          a.dropdown-item href="#{new_company_path}" New Company
     ul.navbar-nav.ml-auto
       li.nav-item
           span.switch.nav-link.switch-sm data-controller="darkmode"

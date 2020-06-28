@@ -12,10 +12,8 @@
     p.card-text
       strong anomalus: 
       = @investment.anomalous
-  .card-footer
-    ul.nav.nav-pills.card-footer-pills.justify-content-center
-      li.nav-item
-        = link_to 'Show', @investment, class: 'nav-link footer-link'
-      li.nav-item
-        = link_to 'Destroy', @investment, method: :delete, data: { confirm: 'Are you sure?' }, class: 'nav-link footer-link'
+  .card-footer.text-center
+    .btn-group
+      = link_to 'Show', @investment, class: 'btn btn-light btn-sm footer-link border'
+      = link_to 'Destroy', @investment, method: :delete, data: { confirm: 'Are you sure?' }, class: 'btn btn-light btn-sm footer-link border'
 br

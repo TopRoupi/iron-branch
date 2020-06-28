@@ -8,6 +8,6 @@ FactoryBot.define do
     cep { Faker::Address.zip_code }
     capital { rand(100000) }
     last_capital_modification { Time.now.strftime("%d/%m/%Y") }
-    status { 'active' }
+    status { rand(2) }
   end
 end

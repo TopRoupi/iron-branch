@@ -18,7 +18,7 @@
         strong email: 
         = @company.email
       p.card-text
-        strong telephone:
+        strong telephone: 
         = @company.telephone
       p.card-text
         strong cep: 
@@ -29,12 +29,12 @@
       p.card-text
         strong last_capital_modification: 
         = @company.last_capital_modification
-  .card-footer
-    ul.nav.nav-pills.card-footer-pills.justify-content-center
-      li.nav-item
-        = link_to 'Show', @company, class: 'nav-link footer-link'
-      li.nav-item
-        = link_to 'Edit', edit_company_path(@company)
-      li.nav-item
-        = link_to 'Destroy', @company, method: :delete, data: { confirm: 'Are you sure?' }, class: 'nav-link footer-link'
+  .card-footer.text-center
+    .btn-group
+      = link_to 'Show', @company, class: 'btn btn-light btn-sm footer-link border'
+      = link_to 'Edit', edit_company_path(@company), class: 'btn btn-light btn-sm footer-link border'
+      = link_to 'Destroy', @company, method: :delete, data: { confirm: 'Are you sure?' }, class: 'btn btn-light btn-sm footer-link border'
+      = link_to 'New invested', company_new_investment_path(@company, type: 'invested'), class: 'btn btn-light btn-sm footer-link border'
+      = link_to 'New investor', company_new_investment_path(@company, type: 'investor'), class: 'btn btn-light btn-sm footer-link border'
+
 br

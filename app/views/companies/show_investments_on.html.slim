@@ -18,3 +18,6 @@ p.font-weight-bold = "#{@invested.name} capital: #{@invested.capital}"
 p.font-weight-bold = "#{@invested.name} capital with investors capital: #{@invested.total_capital}"
 p.font-weight-bold = "#{@company.name} investments on #{@invested.name}  total value: #{@company.participation_value_on(@invested)}"
 p.font-weight-bold = "#{@company.name} participation percentage: #{@company.participation_percentage_on(@invested)}"
+
+.apple_pagination.text-center
+  = will_paginate @investments 

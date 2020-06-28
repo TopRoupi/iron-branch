@@ -3,7 +3,8 @@ hr
 = form_tag companies_path, method: :get, id: 'search-form'
   .row.no-gutters
     .col
-      = text_field_tag :search, params[:search], class: "form-control py-2 border-right-0 border", type: 'search', placeholder: 'search by name, email, cnpj, telephone or cep', autocomplete: "off", autofocus: 'true', style: 'border-radius: 0.25rem 0rem 0rem 0.25rem;'
+      = autocomplete_field_tag :search, params[:search], autocomplete_company_name_companies_path, size: 75, class: 'form-control py-2 border-right-0 border', placeholder: 'search by name, email, cnpj, telephone or cep', style: 'border-radius: 0.25rem 0rem 0rem 0.25rem;'
+      / = text_field_tag :search, params[:search], class: "form-control py-2 border-right-0 border", type: 'search', placeholder: 'search by name, email, cnpj, telephone or cep', autocomplete: "off", autofocus: 'true', style: 'border-radius: 0.25rem 0rem 0rem 0.25rem;'
     .col-auto
       button.btn.btn-outline.rounded-0.border type='button' onclick="window.location.href='#{companies_path}'"
         = octicon "x"
@@ -13,6 +14,7 @@ hr
     .col-auto
       a#ad-btn.btn.border style="margin-left: 10px" data-toggle="collapse" data-target="#ad-opt" href="#ad-opt" aria-controls="#ad-opt"
         = octicon "tools"
+  small.form-text.text-muted Autocomplete works only for companies names, but the search works with others terms too.
 
   .collapse id="ad-opt"
     br

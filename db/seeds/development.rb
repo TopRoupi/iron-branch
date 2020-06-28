@@ -74,6 +74,9 @@
 #  [00.00, 00.00, 00.00, 150.0], #C
 #  [00.00, 00.00, 00.00, 00.00]] #D
 
+10000.times do
+ FactoryBot.create :company
+end
 
 company_a = FactoryBot.create :company,
                               capital: 100,

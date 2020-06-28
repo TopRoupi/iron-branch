@@ -6,5 +6,7 @@ h1 Companies
   - @company = company
   == render 'company_card'
 
+.apple_pagination.text-center
+  = will_paginate @companies 
+
 br
-= link_to 'New Company', new_company_path
