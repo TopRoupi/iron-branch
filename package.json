@@ -8,18 +8,11 @@
     "@rails/webpacker": "4.2.2",
     "bootstrap": "^4.5.0",
     "darkreader": "^4.9.10",
-<<<<<<< HEAD
-<<<<<<< HEAD
     "easy-autocomplete": "^1.3.5",
     "jquery": "3.4.1",
     "jquery-ui-bundle": "^1.12.1-migrate",
     "jquery-ujs": "^1.2.2",
-=======
     "jquery": "3.5.0",
->>>>>>> 1ab467958603c63f1913612c1a740528edd8e3fc
-=======
-    "jquery": "3.5.0",
->>>>>>> 1ab467958603c63f1913612c1a740528edd8e3fc
     "popper.js": "^1.16.1",
     "stimulus": "^1.1.1",
     "turbolinks": "^5.2.0"
