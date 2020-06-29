@@ -51,4 +51,20 @@ class Company < ApplicationRecord
   def self.search(term)
     Company.fuzzy_search(term)
   end
+
+  def all_investors
+    result = unique_investor_companies_investments
+
+    result.filter! do |investments|
+      investments[0].anomalous != true
+    end
+
+    result.map! do |investments|
+      investor = investments[0].investor
+      
+      [investor.all_investors, investor]
+    end
+    
+    result.flatten
+  end
 end

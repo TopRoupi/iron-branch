@@ -35,3 +35,7 @@ p
 = link_to 'Edit', edit_company_path(@company)
 | \
 = link_to 'Back', companies_path
+| \
+= link_to 'New invested', company_new_investment_path(@company, type: 'invested')
+| \
+= link_to 'New investor', company_new_investment_path(@company, type: 'investor')

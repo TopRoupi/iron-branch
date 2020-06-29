@@ -108,4 +108,17 @@ class CompanyTest < ActiveSupport::TestCase
       assert_includes(Company.search(column), @company)
     end
   end
+
+  test "#all_investors should return all investors companies direct and indirect" do
+    investor_a = create :company
+    investor_b = create :company
+    not_an_investor = create :company
+
+    create :investment, investor: investor_a, invested: investor_b
+    create :investment, investor: investor_b, invested: @company
+    create :investment, investor: @company, invested: not_an_investor
+
+    assert_includes(@company.all_investors, investor_a, investor_b)
+    refute_includes(@company.all_investors, not_an_investor)
+  end
 end

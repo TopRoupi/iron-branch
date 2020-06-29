@@ -38,7 +38,7 @@
 
 - [x] Pagination on company index
 - [x] Pagination on company investments_on
-- [ ] companies#new_invested_invesment controller 
-- [ ] companies#new_investor_invesment controller 
-- [ ] mark anomalous when creating a circular investment 
+- [x] companies#new_invested_invesment controller 
+- [x] companies#new_investor_invesment controller 
+- [x] mark anomalous when creating a circular investment 
 - [ ] update anomalous when creating or updating companies investments 

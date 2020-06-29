@@ -1,4 +1,9 @@
 @import "~bootstrap/scss/bootstrap";
+@import "~bootstrap-select/sass/bootstrap-select";
+
+.btn.dropdown-toggle.btn-light {
+  border: 1px solid #ced4da !important;
+}
 
 $font-size-base: 1rem;
 $font-size-lg: ($font-size-base * 1.25);
