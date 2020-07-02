@@ -34,7 +34,7 @@
       = link_to 'Show', @company, class: 'btn btn-light btn-sm footer-link border'
       = link_to 'Edit', edit_company_path(@company), class: 'btn btn-light btn-sm footer-link border'
       = link_to 'Destroy', @company, method: :delete, data: { confirm: 'Are you sure?' }, class: 'btn btn-light btn-sm footer-link border'
-      = link_to 'New invested', company_new_investment_path(@company, type: 'invested'), class: 'btn btn-light btn-sm footer-link border'
-      = link_to 'New investor', company_new_investment_path(@company, type: 'investor'), class: 'btn btn-light btn-sm footer-link border'
+      = link_to 'New invested', new_investment_path(investor_id: @company.id), class: 'btn btn-light btn-sm footer-link border'
+      = link_to 'New investor', new_investment_path(invested_id: @company.id), class: 'btn btn-light btn-sm footer-link border'
 
 br

@@ -7,8 +7,25 @@
   - else
     = f.input :investor_id, as: :hidden
     .form-group
-      label Invested cnpj
-      = autocomplete_field_tag :cnpj, '', autocomplete_company_cnpj_companies_path, class: 'selectpicker form-control autocomplete ui-autocomplete-input', id_element: '#investment_investor_id'
+      label Investor cnpj
+      = autocomplete_field_tag :investor_cnpj, '', autocomplete_company_cnpj_companies_path, class: 'selectpicker form-control autocomplete ui-autocomplete-input', id_element: '#investment_investor_id'
+
+    #investor_preview.card.d-none data-controller='investment_company_preview'
+      .card-body
+        p.card-text
+          strong Investor: 
+          span#investor_name
+        p.card-text
+          strong Email: 
+          span#investor_email
+        p.card-text
+          strong Cep: 
+          span#investor_cep
+        p.card-text
+          strong Telephone: 
+          span#investor_telephone
+      br
+
 
   - if @investment.invested_id
     = f.input :invested_id, as: :hidden
@@ -16,7 +33,23 @@
     = f.input :invested_id, as: :hidden
     .form-group
       label Invested cnpj
-      = autocomplete_field_tag :cnpj, '', autocomplete_company_cnpj_companies_path, class: 'selectpicker form-control autocomplete ui-autocomplete-input', id_element: '#investment_invested_id'
+      = autocomplete_field_tag :invested_cnpj, '', autocomplete_company_cnpj_companies_path, class: 'selectpicker form-control autocomplete ui-autocomplete-input', id_element: '#investment_invested_id'
+
+    #invested_preview.card.d-none data-controller='investment_company_preview'
+      .card-body
+        p.card-text
+          strong Invested: 
+          span#invested_name
+        p.card-text
+          strong Email: 
+          span#invested_email
+        p.card-text
+          strong Cep: 
+          span#invested_cep
+        p.card-text
+          strong Telephone: 
+          span#invested_telephone
+      br
 
   .row
     .col-lg-6.col-sm-6.col-12

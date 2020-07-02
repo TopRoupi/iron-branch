@@ -15,11 +15,9 @@ class InvestmentsController < ApplicationController
   # GET /investments/new
   def new
     @investment = Investment.new
-    @investor = Company.find(params[:investor_id])
-    @invested = Company.find(params[:invested_id])
 
-    @investment.investor_id = @investor.id
-    @investment.invested_id = @invested.id
+    @investment.investor_id = params[:investor_id]
+    @investment.invested_id = params[:invested_id]
 
     session[:return_to] = request.referer
   end

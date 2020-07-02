@@ -36,6 +36,6 @@ p
 | \
 = link_to 'Back', companies_path
 | \
-= link_to 'New invested', company_new_investment_path(@company, type: 'invested')
+= link_to 'New invested', new_investment_path(investor_id: @company.id)
 | \
-= link_to 'New investor', company_new_investment_path(@company, type: 'investor')
+= link_to 'New investor', new_investment_path(invested_id: @company.id)

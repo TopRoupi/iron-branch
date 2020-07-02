@@ -1,7 +1,19 @@
 h1
-  | New Investment of 
-  = link_to @investor.name, @investor
-  |  on 
-  = link_to @invested.name, @invested
+  - if @investment.investor_id and @investment.invested_id
+    | New investment of 
+    = link_to @investment.investor.name, @investment.investor
+    |  on 
+    = link_to@investment.invested.name, @investment.invested
+
+  - if @investment.investor_id and not @investment.invested_id
+    = link_to @investment.investor.name, @investment.investor
+    |  new invested
+
+  - if not @investment.investor_id and @investment.invested_id
+    = link_to @investment.invested.name, @investment.invested
+    |  new investor
+
+  - if not @investment.investor_id and not @investment.invested_id
+    | new investment
 
 = render 'form', investment: @investment

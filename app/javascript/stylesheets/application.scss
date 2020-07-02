@@ -2,7 +2,12 @@
 @import "~bootstrap-select/sass/bootstrap-select";
 
 .btn.dropdown-toggle.btn-light {
-  border: 1px solid #ced4da !important;
+  border: 1px solid #ced4da;
+  background-color: transparent !important;
+}
+
+.is-valid .btn.dropdown-toggle.btn-light {
+  border-color: rgb(42, 155, 67) !important;
 }
 
 $font-size-base: 1rem;

@@ -1,7 +1,7 @@
 class CompaniesController < ApplicationController
   before_action :set_company, only: [:show, :edit, :update, :destroy, :show_investments_on, :new_investment]
   autocomplete :company, :name, full: true
-  autocomplete :company, :cnpj, full: false
+  autocomplete :company, :cnpj, full: false, extra_data: [:name, :cep, :telephone, :email]
 
   # GET /companies
   # GET /companies.json
@@ -37,19 +37,6 @@ class CompaniesController < ApplicationController
   # GET /companies/new
   def new
     @company = Company.new
-  end
-
-  # GET /companies/1/new_investment/(investor/invested)
-  def new_investment
-    @investment = Investment.new
-
-    if params[:type] == 'investor'
-      @investment.invested = @company
-    else
-      @investment.investor = @company
-    end
-
-    session[:return_to] = request.referer
   end
 
   # GET /companies/1/edit

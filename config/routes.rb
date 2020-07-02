@@ -8,6 +8,5 @@ Rails.application.routes.draw do
   get 'home/index'
   root to: 'home#index'
   get 'companies/:id/investments-on/:invested_id', to: 'companies#show_investments_on'
-  get 'companies/:id/new_investment/:type', to: 'companies#new_investment', as: :company_new_investment
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
 end
