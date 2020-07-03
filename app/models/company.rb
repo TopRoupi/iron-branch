@@ -4,6 +4,62 @@ class Company < ApplicationRecord
   has_many :investments, foreign_key: 'investor_id'
   has_many :investors, class_name: 'Investment', foreign_key: 'invested_id'
 
+  validates :email,
+            format: { with: URI::MailTo::EMAIL_REGEXP },
+            presence: true,
+            uniqueness: true
+
+  validates :name,
+            length: { maximum: 60 },
+            presence: true,
+            uniqueness: true
+
+  validates :constitution,
+            presence: true
+
+  validates :status,
+            presence: true
+
+  validates :cnpj,
+            cnpj: true,
+            presence: true,
+            uniqueness: true
+
+  validates :cep,
+            format: {
+              with: /[0-9]{5}-[0-9]{3}/
+            },
+            presence: true
+
+  validates :capital,
+            presence: true,
+            numericality: { greater_than: 0 }
+
+  validates :last_capital_modification,
+            presence: true
+            
+  validates :telephone, 
+            format: {
+              with: /(^|\()?\s*(\d{2})\s*(\s|\))*(9?\d{4})(\s|-)?(\d{4})($|\n)/
+            },
+            presence: true,
+            uniqueness: true
+
+  def self.generate_tree(branches, levels, size_factor = 5)
+    company = FactoryBot.create :company
+
+    return company if levels < 0
+
+    rand(branches).times do
+      invested = generate_tree(branches , levels - 1)
+      level /= size_factor
+      branches = branches.min-1..branches.max
+      FactoryBot.create :investment, investor: company, invested: invested 
+    end
+
+    company
+  end
+
   def have_anomalies?
     investments.exists?(anomalous: true)
   end

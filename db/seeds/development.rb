@@ -74,37 +74,39 @@
 #  [00.00, 00.00, 00.00, 150.0], #C
 #  [00.00, 00.00, 00.00, 00.00]] #D
 
-10000.times do
- FactoryBot.create :company
-end
+# 10000.times do
+#  FactoryBot.create :company
+# end
 
-company_a = FactoryBot.create :company,
-                              capital: 100,
-                              name: "Company_A"
+# company_a = FactoryBot.create :company,
+#                               capital: 100,
+#                               name: "Company_A"
 
-company_b = FactoryBot.create :company,
-                              capital: 100,
-                              name: "Company_B"
+# company_b = FactoryBot.create :company,
+#                               capital: 100,
+#                               name: "Company_B"
 
-company_c = FactoryBot.create :company,
-                              capital: 100,
-                              name: "Company_C"
+# company_c = FactoryBot.create :company,
+#                               capital: 100,
+#                               name: "Company_C"
 
-company_d = FactoryBot.create :company,
-                              capital: 100,
-                              name: "Company_D"
+# company_d = FactoryBot.create :company,
+#                               capital: 100,
+#                               name: "Company_D"
 
-FactoryBot.create :investment,
-                  investor: company_a,
-                  invested: company_b,
-                  value: 50
+# FactoryBot.create :investment,
+#                   investor: company_a,
+#                   invested: company_b,
+#                   value: 50
 
-FactoryBot.create :investment,
-                  investor: company_b,
-                  invested: company_c,
-                  value: 50
+# FactoryBot.create :investment,
+#                   investor: company_b,
+#                   invested: company_c,
+#                   value: 50
 
-FactoryBot.create :investment,
-                  investor: company_c,
-                  invested: company_d,
-                  value: 50
+# FactoryBot.create :investment,
+#                   investor: company_c,
+#                   invested: company_d,
+#                   value: 50
+
+Company.generate_tree(1..1, 20)

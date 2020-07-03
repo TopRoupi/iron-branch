@@ -51,11 +51,7 @@
           span#invested_telephone
       br
 
-  .row
-    .col-lg-6.col-sm-6.col-12
-      = f.input :value
-    .col-lg-6.col-sm-6.col-12
-      = f.input :funds, as: :select, collection: Investment.funds.keys
+  = f.input :value
   = f.input :investment_date
 
   = f.submit class: 'btn btn-primary float-right'

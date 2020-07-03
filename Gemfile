@@ -32,6 +32,8 @@ gem 'rails-jquery-autocomplete'
 
 gem 'jquery-ui-rails'
 
+gem 'validates_cnpj'
+
 # Use Redis adapter to run Action Cable in production
 # gem 'redis', '~> 4.0'
 # Use Active Model has_secure_password
