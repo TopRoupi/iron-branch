@@ -11,8 +11,7 @@ class Company < ApplicationRecord
 
   validates :name,
             length: { maximum: 60 },
-            presence: true,
-            uniqueness: true
+            presence: true
 
   validates :constitution,
             presence: true
@@ -48,11 +47,11 @@ class Company < ApplicationRecord
   def self.generate_tree(branches, levels, size_factor = 5)
     company = FactoryBot.create :company
 
-    return company if levels < 0
+    return company if levels <= 0
 
     rand(branches).times do
       invested = generate_tree(branches , levels - 1)
-      level /= size_factor
+      levels /= size_factor
       branches = branches.min-1..branches.max
       FactoryBot.create :investment, investor: company, invested: invested 
     end

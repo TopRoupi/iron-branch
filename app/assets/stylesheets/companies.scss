@@ -2,6 +2,9 @@
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: https://sass-lang.com/
 
+html, body, .container {
+  height: 100% !important;
+}
 
 ul.nested {
   border-left: 2px solid;
@@ -10,6 +13,7 @@ ul.nested {
 ul.nested li {
   padding-left: 55px;
   border-bottom: 0px;
+  min-width: 300px;
 }
 
 .participation {
@@ -31,4 +35,14 @@ ul.list-group-flush li a, ul.list-group-nested li a{
 
 .comp-status {
   fill: #adadad !important;
+}
+
+.tree-wrapper { 
+  width: 100% !important;
+  height: 80% !important;
+  overflow: hidden !important;
+}
+
+.tree-ul {
+  transition: transform .2s;
 }

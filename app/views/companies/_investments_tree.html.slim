@@ -1,0 +1,8 @@
+.tree-view data-controller="treeview"
+  .tree-wrapper.border
+    ul.tree-ul.list-group.list-group-flush data-target="treeview.tree"
+      = raw html_down_tree(@company)
+  .tree-controls.text-right.bg-light.border
+    button.reset.btn.btn-light.border-0 data-action="click->treeview#zoomReset" = octicon "screen-normal"
+    button.zoom_in.btn.btn-light.border-0 data-action="click->treeview#zoomIn" = octicon "plus"
+    button.zoom_out.btn.btn-light.border-0 data-action="click->treeview#zoomOut" = octicon "dash"

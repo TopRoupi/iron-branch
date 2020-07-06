@@ -19,6 +19,4 @@ $(document).ready(function(e){
   $('#investor_cnpj').bind('railsAutocomplete.select', (event, data) => {
     render_company_preview(data, 'investor')
   });
-
-  console.log('sadwafawf')
 })
