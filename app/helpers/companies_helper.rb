@@ -1,20 +1,12 @@
 module CompaniesHelper
-  def html_down_tree(company, invested = nil)
-    if company.invested_companies == []
-      tree = "<li id='comp-#{company.id}' class='list-group-item'>"
-      tree += "<a href='/companies/#{invested.id}/investments-on/#{company.id}' class='participation'>#{invested.participation_percentage_on(company).round(2)}%</span>" if invested != nil
-      tree += "<a href='/companies/#{company.id}'>#{company.name}</a>"
-      tree += "#{octicon (company.status == 'active' ? 'dot-fill' : 'dot'), class: 'comp-status'}"
-      tree += "</li>"
-    end
-
+  def html_investments_tree(company, invested = nil)
     tree = "<li id='comp-#{company.id}' class='list-group-item'>"
     tree += "<a href='/companies/#{invested.id}/investments-on/#{company.id}' class='participation'>#{invested.participation_percentage_on(company).round(2)}%</span>" if invested != nil
     tree += "<a href='/companies/#{company.id}'>#{company.name}</a>"
     tree += "#{octicon (company.status == 'active' ? 'dot-fill' : 'dot'), class: 'comp-status'}"
     tree += '<ul class="list-group list-group-flush nested">'
 
-    company.unique_invested_companies_investments.map do |investments|
+    company.unique_invested_companies_investments.each do |investments|
       sub_company = investments[0].invested
       if investments[0].anomalous == true
         tree += "<li id='comp-#{company.id}'"
@@ -26,7 +18,7 @@ module CompaniesHelper
         tree += "#{octicon (sub_company.status == 'active' ? 'dot-fill' : 'dot'), class: 'comp-status'}"
         tree += "</li>"
       else
-        tree += html_down_tree(sub_company, company)
+        tree += html_investments_tree(sub_company, company)
       end
     end
 
@@ -35,4 +27,42 @@ module CompaniesHelper
     tree
   end
 
+  def html_investors_tree(company, sub_tree = '', an = false)
+    if company.investors.empty?
+      tree = "<li id='comp-#{company.id}' class='list-group-item'>"
+      tree += "<a href='/companies/#{company.id}'>#{company.name}</a>"
+      tree += "#{octicon (company.status == 'active' ? 'dot-fill' : 'dot'), class: 'comp-status'}"
+      tree += '<ul class="list-group list-group-flush nested">'
+      tree += sub_tree
+      tree += '</ul>'
+      tree += '</li>'
+      return tree
+    end
+
+    result = ''
+    company.unique_investor_companies_investments.each do |investments|
+      sub_company = investments[0].investor
+
+      tree = "<li id='comp-#{company.id}' class='list-group-item'>"
+      tree += "<a href='/companies/#{sub_company.id}/investments-on/#{company.id}' class='participation'>#{sub_company.participation_percentage_on(company).round(2)}%</span>"
+      tree += "<a href='/companies/#{company.id}'>#{company.name}</a>"
+      tree += "#{octicon (company.status == 'active' ? 'dot-fill' : 'dot'), class: 'comp-status'}"
+      tree += '<ul class="list-group list-group-flush nested">'
+      tree += sub_tree
+      tree += '</ul>'
+      tree += '</li>'
+
+      if an == true
+        result += tree
+        break
+      end
+      
+      if investments[0].anomalous == true
+        result += html_investors_tree(sub_company, tree, true)
+      else
+        result += html_investors_tree(sub_company, tree)
+      end
+    end
+    result
+  end
 end

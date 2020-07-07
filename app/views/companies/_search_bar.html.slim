@@ -35,10 +35,10 @@ hr
     .form-group.row
       .col-sm-2 Constitution
       .col-sm-10
-          = select_tag :constitution, options_for_select(Company.constitutions), class: 'form-control', include_blank: true
+          = select_tag :constitution, options_for_select(Company.constitutions), class: 'selectpicker form-control', include_blank: true
     .form-group.row
       .col-sm-2 Status
       .col-sm-10
-          = select_tag :status, options_for_select(Company.statuses), class: 'form-control', include_blank: true
+          = select_tag :status, options_for_select(Company.statuses), class: 'selectpicker form-control', include_blank: true
 
 hr

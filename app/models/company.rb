@@ -122,4 +122,30 @@ class Company < ApplicationRecord
     
     result.flatten
   end
+
+  def all_investeds
+    result = unique_invested_companies_investments
+
+    result.filter! do |investments|
+      investments[0].anomalous != true
+    end
+
+    result.map! do |investments|
+      invested = investments[0].invested
+      
+      [invested.all_investeds, invested]
+    end
+    
+    result.flatten
+  end
+
+  def investeds_anomalies_count
+    count = have_anomalies? ? 1 : 0
+
+    count + all_investeds.map{ |comp| comp.have_anomalies? }.count(true)
+  end
+
+  def investors_anomalies_count
+    all_investors.map{ |comp| comp.have_anomalies? }.count(true)
+  end
 end

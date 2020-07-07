@@ -27,6 +27,7 @@ ul.list-group-flush li {
   padding-right: 0px;
   padding-top: 0px;
   padding-bottom: 0px;
+  border: none;
 }
 
 ul.list-group-flush li a, ul.list-group-nested li a{
@@ -37,9 +38,9 @@ ul.list-group-flush li a, ul.list-group-nested li a{
   fill: #adadad !important;
 }
 
-.tree-wrapper { 
+.tree-wrapper, .tree-view { 
   width: 100% !important;
-  height: 80% !important;
+  height: 85% !important;
   overflow: hidden !important;
 }
 
