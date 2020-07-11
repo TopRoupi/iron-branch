@@ -5,12 +5,9 @@
   - if @investment.investor_id
     = f.input :investor_id, as: :hidden
   - else
-    = f.input :investor_id, as: :hidden
-    .form-group
-      label Investor cnpj
-      = autocomplete_field_tag :investor_cnpj, '', autocomplete_company_cnpj_companies_path, class: 'selectpicker form-control autocomplete ui-autocomplete-input', id_element: '#investment_investor_id'
+    = f.input :investor_id, url: autocomplete_company_cnpj_companies_path, as: :autocomplete,class: 'form-control autocomplete ui-autocomplete-input', id_element: '#investment_investor_id', label: 'Investor cnpj'
 
-    #investor_preview.card.d-none data-controller='investment_company_preview'
+    #investor_preview.card.d-none.mb-2 data-controller='investment_company_preview'
       .card-body
         p.card-text
           strong Investor: 
@@ -24,18 +21,14 @@
         p.card-text
           strong Telephone: 
           span#investor_telephone
-      br
 
 
   - if @investment.invested_id
     = f.input :invested_id, as: :hidden
   - else
-    = f.input :invested_id, as: :hidden
-    .form-group
-      label Invested cnpj
-      = autocomplete_field_tag :invested_cnpj, '', autocomplete_company_cnpj_companies_path, class: 'selectpicker form-control autocomplete ui-autocomplete-input', id_element: '#investment_invested_id'
+    = f.input :invested_id, url: autocomplete_company_cnpj_companies_path, as: :autocomplete,class: 'form-control autocomplete ui-autocomplete-input', id_element: '#investment_invested_id', label: 'Invested cnpj'
 
-    #invested_preview.card.d-none data-controller='investment_company_preview'
+    #invested_preview.card.d-none.mb-2 data-controller='investment_company_preview'
       .card-body
         p.card-text
           strong Invested: 
@@ -49,9 +42,17 @@
         p.card-text
           strong Telephone: 
           span#invested_telephone
-      br
+
+  .form-group
+    .row
+      .col-6
+        = link_to 'New company', new_company_path, class: 'btn btn-secondary btn-block'
+      .col-6
+        = link_to 'Search companies', companies_path, class: 'btn btn-secondary btn-block'
 
   = f.input :value
   = f.input :investment_date
 
   = f.submit class: 'btn btn-primary float-right'
+
+#agua.ui-front

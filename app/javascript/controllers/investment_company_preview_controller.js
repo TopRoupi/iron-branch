@@ -12,11 +12,11 @@ function render_company_preview(data, type) {
 
 
 $(document).ready(function(e){
-  $('#invested_cnpj').bind('railsAutocomplete.select', (event, data) => {
+  $('#investment_invested_id').bind('railsAutocomplete.select', (event, data) => {
     render_company_preview(data, 'invested')
   });
 
-  $('#investor_cnpj').bind('railsAutocomplete.select', (event, data) => {
+  $('#investment_investor_id').bind('railsAutocomplete.select', (event, data) => {
     render_company_preview(data, 'investor')
   });
 })

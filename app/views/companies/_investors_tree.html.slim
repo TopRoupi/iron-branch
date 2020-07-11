@@ -5,7 +5,7 @@
   .tree-controls.d-flex.bg-light.border
     span style="padding: .3rem 1rem;"
       | circular investments: 
-      = @company.investeds_anomalies_count
+      = @company.investors_anomalies_count
     .ml-auto
       button.reset.btn.btn-light.border-0 data-action="click->treeview#zoomReset" = octicon "screen-normal"
       button.zoom_in.btn.btn-light.border-0 data-action="click->treeview#zoomIn" = octicon "plus"

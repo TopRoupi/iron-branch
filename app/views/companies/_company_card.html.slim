@@ -2,7 +2,7 @@
   .card-body
     p.card-text
       strong name: 
-      = @company.name
+      = @company.sufixed_name
       span.float-right class=(@company.status == 'active' ? 'text-success' : 'text-danger' )
         = @company.status
     p.card-text

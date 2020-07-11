@@ -4,7 +4,6 @@ hr
   .row.no-gutters
     .col
       = autocomplete_field_tag :search, params[:search], autocomplete_company_name_companies_path, size: 75, class: 'form-control py-2 border-right-0 border', placeholder: 'search by name, email, cnpj, telephone or cep', style: 'border-radius: 0.25rem 0rem 0rem 0.25rem;'
-      / = text_field_tag :search, params[:search], class: "form-control py-2 border-right-0 border", type: 'search', placeholder: 'search by name, email, cnpj, telephone or cep', autocomplete: "off", autofocus: 'true', style: 'border-radius: 0.25rem 0rem 0rem 0.25rem;'
     .col-auto
       button.btn.btn-outline.rounded-0.border type='button' onclick="window.location.href='#{companies_path}'"
         = octicon "x"
@@ -19,26 +18,29 @@ hr
   .collapse id="ad-opt"
     br
     .form-group.row data-controller="company_advanced_search"
-      = label_tag :status, "Capital", class: 'col-sm-2 col-form-label'
+      = label_tag :capital, "Capital", class: 'col-sm-2 col-form-label'
       .col-sm-10
         .input-group 
           .input-group-btn.search-panel
-            button.btn.btn-default.dropdown-toggle.border data-toggle="dropdown" type="button" style='border-radius: 0.25rem 0rem 0rem 0.25rem;'
-              span#search_concept Filter by
-              span.caret
-            .dropdown-menu
-              a#greather.dropdown-item href="#>" Greather than
-              a#less.dropdown-item href="#<" Less than
-              a#equals.dropdown-item href="#=" Equals
-          = hidden_field_tag :capital_param, params[:capital_param]
+            = select_tag :capital_param, options_for_select({'Grather than': '>', 'Less than': '<', 'Equals': '='}, params[:capital_param]), class: 'selectpicker form-control search-term', include_blank: 'Filter by'
           = number_field_tag :capital, params[:capital], class: 'form-control', autocomplete: "off"
+
     .form-group.row
-      .col-sm-2 Constitution
+      = label_tag :constitution, "Constitution", class: 'col-sm-2 col-form-label'
       .col-sm-10
-          = select_tag :constitution, options_for_select(Company.constitutions), class: 'selectpicker form-control', include_blank: true
+        = select_tag :constitution, options_for_select(Company.constitutions, params[:constitution]), class: 'selectpicker form-control', include_blank: true
+
     .form-group.row
-      .col-sm-2 Status
+      = label_tag :status, "Status", class: 'col-sm-2 col-form-label'
       .col-sm-10
-          = select_tag :status, options_for_select(Company.statuses), class: 'selectpicker form-control', include_blank: true
+        = select_tag :status, options_for_select(Company.statuses, params[:status]), class: 'selectpicker form-control', include_blank: true
+
+    .form-group.row
+      = label_tag :order_by, "Order by", class: 'col-sm-2 col-form-label'
+      .col-sm-10
+        .input-group 
+          .input-group-btn.search-panel
+            = select_tag :order_param, options_for_select({'Ascendant': 'asc', 'Decrescent': 'desc'}, params[:order_param]), class: 'selectpicker form-control search-term', include_blank: 'Param'
+          = select_tag :order_by, options_for_select(%I[name status email capital constitution], params[:order_by]), class: 'selectpicker form-control', include_blank: true
 
 hr

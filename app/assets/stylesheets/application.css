@@ -32,6 +32,10 @@ select::-ms-expand {
   display: none;
 }
 
+input[type=number] {
+  -moz-appearance: textfield;
+}
+
 .octicon {
   fill: #000;
 }

@@ -19,6 +19,10 @@ class CompaniesController < ApplicationController
       @companies.where!("capital #{params[:capital_param]} #{params[:capital]}")
     end
 
+    unless params[:order_param].blank? or params[:order_by].blank?
+      @companies.order!("#{params[:order_by]} #{'DESC' if params[:order_param] == 'desc'}")
+    end
+
     @companies = @companies.paginate(page: params[:page], per_page: 10)
   end
 
