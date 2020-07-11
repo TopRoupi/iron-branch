@@ -1,18 +1,38 @@
+h1 class="#{@investment.anomalous ? 'text-danger' : 'text-success'}"
+  | Investment of 
+  = link_to @investment.investor.name, @investment.investor
+  |  on 
+  = link_to @investment.invested.name, @investment.invested
+
+br
+
+.row
+  .col-md-6
+    p
+      strong Investor:
+    - @company = @investment.investor
+    = render 'companies/company_card'
+  .col-md-6
+    p
+      strong Invested:
+    - @company = @investment.invested
+    = render 'companies/company_card'
+
 p
-  strong Investor company:
-  = @investment.investor_id
-p
-  strong Invested company:
-  = @investment.invested_id
-p
-  strong Value:
+  strong Value: 
   = @investment.value
 p
-  strong Funds:
+  strong Funds: 
   = @investment.funds
 p
-  strong Investment date:
+  strong Investment date: 
   = @investment.investment_date
 p
-  strong Anomalous:
+  strong Anomalous: 
   = @investment.anomalous
+
+.btn-toolbar.justify-content-between.mb-5
+  .btn-group.mb-5
+    = link_to 'Back', :back, class: 'btn btn-secondary'
+  .btn-group.mb-5
+    = link_to 'Destroy', @investment, method: :delete, data: { confirm: 'Are you sure?' }, class: 'btn btn-danger'

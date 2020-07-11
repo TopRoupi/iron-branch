@@ -1,30 +1,50 @@
-p
-  strong Name:
-  = @company.name
-p
-  strong Cnpj:
-  = @company.cnpj
-p
-  strong Constitution:
-  = @company.constitution
-p
-  strong Email:
-  = @company.email
-p
-  strong Telephone:
-  = @company.telephone
-p
-  strong Cep:
-  = @company.cep
-p
-  strong Capital:
-  = @company.capital
-p
-  strong Last capital modification:
-  = @company.last_capital_modification
-p
-  strong Status:
-  = @company.status
+h1 class="#{@company.status == 'active' ? 'text-success' : 'text-danger'}"
+  = @company.sufixed_name
+  |  
+  - if @company.status == 'active'
+    = octicon "dot-fill", height: 30, style: "fill: #28a745"
+  - else
+    = octicon "dot", height: 30, style: "fill: #dc3545"
+
+br
+
+.row
+  .col-md-6
+    .card.bg-light.mb-4
+      .card-header Details
+      .card-body
+        p
+          strong Name: 
+          = @company.name
+        p
+          strong Cnpj: 
+          = @company.cnpj
+        p
+          strong Constitution:
+          = @company.constitution
+        p
+          strong Cep: 
+          = @company.cep
+        p
+          strong Capital: 
+          = @company.capital
+        p
+          strong Last capital modification: 
+          = @company.last_capital_modification
+        p
+          strong Status: 
+          = @company.status
+  .col-md-6
+    .card.bg-light.mb-4
+      .card-header Contacts
+      .card-body
+        p
+          strong Email: 
+          = @company.email
+        p
+          strong Telephone: 
+          = @company.telephone
+
 p
   strong Investors tree:
   == render 'investors_tree'
@@ -32,12 +52,11 @@ p
   strong Investments tree:
   == render 'investments_tree'
 
-
-
-= link_to 'Edit', edit_company_path(@company)
-| \
-= link_to 'Back', companies_path
-| \
-= link_to 'New invested', new_investment_path(investor_id: @company.id)
-| \
-= link_to 'New investor', new_investment_path(invested_id: @company.id)
+.btn-toolbar.justify-content-between.mb-5
+  .btn-group
+    = link_to 'Back', :back, class: 'btn btn-secondary'
+  .btn-group
+    = link_to 'Edit', edit_company_path(@company), class: 'btn btn-primary'
+    = link_to 'New invested', new_investment_path(investor_id: @company.id), class: 'btn btn-primary'
+    = link_to 'New investor', new_investment_path(invested_id: @company.id), class: 'btn btn-primary'
+    = link_to 'Destroy', @company, method: :delete, data: { confirm: 'Are you sure?' }, class: 'btn btn-danger'

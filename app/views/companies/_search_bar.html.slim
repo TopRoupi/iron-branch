@@ -22,7 +22,7 @@ hr
       .col-sm-10
         .input-group 
           .input-group-btn.search-panel
-            = select_tag :capital_param, options_for_select({'Grather than': '>', 'Less than': '<', 'Equals': '='}, params[:capital_param]), class: 'selectpicker form-control search-term', include_blank: 'Filter by'
+            = select_tag :capital_param, options_for_select({'Grather than': '>', 'Less than': '<', 'Equals': '='}, params[:capital_param] || '='), class: 'selectpicker form-control search-term'
           = number_field_tag :capital, params[:capital], class: 'form-control', autocomplete: "off"
 
     .form-group.row
@@ -40,7 +40,7 @@ hr
       .col-sm-10
         .input-group 
           .input-group-btn.search-panel
-            = select_tag :order_param, options_for_select({'Ascendant': 'asc', 'Decrescent': 'desc'}, params[:order_param]), class: 'selectpicker form-control search-term', include_blank: 'Param'
+            = select_tag :order_param, options_for_select({'Ascendant': 'asc', 'Decrescent': 'desc'}, params[:order_param] || 'asc'), class: 'selectpicker form-control search-term'
           = select_tag :order_by, options_for_select(%I[name status email capital constitution], params[:order_by]), class: 'selectpicker form-control', include_blank: true
 
 hr

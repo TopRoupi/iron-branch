@@ -5,8 +5,9 @@ h1 Companies
 - @companies.each do |company|
   - @company = company
   == render 'company_card'
-
-.apple_pagination.text-center
-  = will_paginate @companies 
+  
+- if will_paginate @companies 
+  .apple_pagination.text-center
+    = will_paginate @companies 
 
 br

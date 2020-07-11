@@ -3,15 +3,14 @@
     p.card-text
       strong value: 
       = @investment.value
+      - if @investment.anomalous?
+        span.float-right.text-danger' cicular
     p.card-text
       strong funds: 
       = @investment.funds
     p.card-text
       strong investment date: 
       = @investment.investment_date
-    p.card-text
-      strong anomalus: 
-      = @investment.anomalous
   .card-footer.text-center
     .btn-group
       = link_to 'Show', @investment, class: 'btn btn-light btn-sm footer-link border'

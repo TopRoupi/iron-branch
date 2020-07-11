@@ -1,4 +1,4 @@
-h1 
+h1 class="#{@investments[0].anomalous ? 'text-danger' : 'text-success'}"
   = link_to @company.name, @company
   |  investments on 
   = link_to @invested.name, @invested
@@ -9,7 +9,7 @@ br
   - @investment = investment
   == render 'investments/investment_card'
 
-a.btn.btn-outline-secondary.float-right href="#{new_investment_path(invested_id: @invested.id, investor_id: @company.id)}" Add a new investment
+a.btn.btn-primary.float-right href="#{new_investment_path(invested_id: @invested.id, investor_id: @company.id)}" Add a new investment
 
 br
 br
@@ -19,5 +19,8 @@ p.font-weight-bold = "#{@invested.name} capital with investors capital: #{@inves
 p.font-weight-bold = "#{@company.name} investments on #{@invested.name}  total value: #{@company.participation_value_on(@invested)}"
 p.font-weight-bold = "#{@company.name} participation percentage: #{@company.participation_percentage_on(@invested)}"
 
-.apple_pagination.text-center
-  = will_paginate @investments 
+- if will_paginate @investments 
+  .apple_pagination.text-center
+    = will_paginate @investments 
+
+br
