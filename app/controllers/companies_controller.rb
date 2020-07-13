@@ -1,7 +1,7 @@
 class CompaniesController < ApplicationController
   before_action :set_company, only: [:show, :edit, :update, :destroy, :show_investments_on, :new_investment]
   autocomplete :company, :name, full: true
-  autocomplete :company, :cnpj, full: false, extra_data: [:name, :cep, :telephone, :email]
+  autocomplete :company, :cnpj, full: false, extra_data: [:name, :cep, :telephone, :email, :cnpj]
 
   # GET /companies
   # GET /companies.json

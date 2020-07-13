@@ -63,6 +63,10 @@ class Company < ApplicationRecord
     investments.exists?(anomalous: true)
   end
 
+  def have_investors_anomalies?
+    investors.exists?(anomalous: true)
+  end
+
   def invested_companies
     investments.pluck(:invested_id).uniq.map do |id|
       Company.find(id)
@@ -146,6 +150,8 @@ class Company < ApplicationRecord
   end
 
   def investors_anomalies_count
-    all_investors.map{ |comp| comp.have_anomalies? }.count(true)
+    count = have_investors_anomalies? ? 1 : 0
+    
+    count + all_investors.map{ |comp| comp.have_investors_anomalies? }.count(true)
   end
 end

@@ -6,6 +6,7 @@ function render_company_preview(data, type) {
   
   $(`#${type}_name`).text(data.item.name)
   $(`#${type}_email`).text(data.item.email)
+  $(`#${type}_cnpj`).text(data.item.cnpj)
   $(`#${type}_cep`).text(data.item.cep)
   $(`#${type}_telephone`).text(data.item.telephone)
 }

@@ -16,11 +16,21 @@
           strong Email: 
           span#investor_email
         p.card-text
+          strong Cnpj: 
+          span#investor_cnpj
+        p.card-text
           strong Cep: 
           span#investor_cep
         p.card-text
           strong Telephone: 
           span#investor_telephone
+
+    .form-group
+      .row
+        .col-6
+          = link_to 'New company', new_company_path, class: 'btn btn-secondary btn-block'
+        .col-6
+          = link_to 'Search companies', companies_path, class: 'btn btn-secondary btn-block'
 
 
   - if @investment.invested_id
@@ -37,18 +47,21 @@
           strong Email: 
           span#invested_email
         p.card-text
+          strong Cnpj: 
+          span#invested_cnpj
+        p.card-text
           strong Cep: 
           span#invested_cep
         p.card-text
           strong Telephone: 
           span#invested_telephone
 
-  .form-group
-    .row
-      .col-6
-        = link_to 'New company', new_company_path, class: 'btn btn-secondary btn-block'
-      .col-6
-        = link_to 'Search companies', companies_path, class: 'btn btn-secondary btn-block'
+    .form-group
+      .row
+        .col-6
+          = link_to 'New company', new_company_path, class: 'btn btn-secondary btn-block'
+        .col-6
+          = link_to 'Search companies', companies_path, class: 'btn btn-secondary btn-block'
 
   = f.input :value
   = f.input :investment_date

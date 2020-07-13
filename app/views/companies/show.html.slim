@@ -53,9 +53,9 @@ p
   == render 'investments_tree'
 
 .btn-toolbar.justify-content-between.mb-5
-  .btn-group
+  .btn-group-sm
     = link_to 'Back', :back, class: 'btn btn-secondary'
-  .btn-group
+  .btn-group-sm
     = link_to 'Edit', edit_company_path(@company), class: 'btn btn-primary'
     = link_to 'New invested', new_investment_path(investor_id: @company.id), class: 'btn btn-primary'
     = link_to 'New investor', new_investment_path(invested_id: @company.id), class: 'btn btn-primary'
