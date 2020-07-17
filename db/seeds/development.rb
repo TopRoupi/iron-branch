@@ -109,4 +109,9 @@ FactoryBot.create :investment,
                   invested: company_d,
                   value: 50
 
+FactoryBot.create :investment,
+                  investor: company_d,
+                  invested: company_a,
+                  value: 50
+
 # Company.generate_tree(1..1, 20)

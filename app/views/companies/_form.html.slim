@@ -4,14 +4,14 @@
 
   .row
     .col-lg-6.col-sm-6.col-12
-      = f.input :name
-      = f.input :email
+      = f.input :name, placeholder: 'Goooooogle'
+      = f.input :email, placeholder: 'example@domain.com'
       = f.input :constitution, as: :select, collection: Company.constitutions.keys
       = f.input :capital
     .col-lg-6.col-sm-6.col-12
-      = f.input :cnpj
-      = f.input :telephone
-      = f.input :cep
+      = f.input :cnpj, placeholder: '00000000000000'
+      = f.input :telephone, placeholder: '00000000000000'
+      = f.input :cep, placeholder: '0000000000'
       = f.input :status, as: :select, collection: Company.statuses.keys
 
   = f.input :last_capital_modification

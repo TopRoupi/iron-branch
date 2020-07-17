@@ -1,8 +1,8 @@
 class Company < ApplicationRecord
   enum constitution: [:ltda, :sa]
   enum status: [:active, :inative]
-  has_many :investments, foreign_key: 'investor_id'
-  has_many :investors, class_name: 'Investment', foreign_key: 'invested_id'
+  has_many :investments, foreign_key: 'investor_id',  dependent: :destroy 
+  has_many :investors, class_name: 'Investment', foreign_key: 'invested_id',  dependent: :destroy 
 
   validates :email,
             format: { with: URI::MailTo::EMAIL_REGEXP },
@@ -26,7 +26,7 @@ class Company < ApplicationRecord
 
   validates :cep,
             format: {
-              with: /[0-9]{5}-[0-9]{3}/
+              with: /[0-9]{5}[0-9]{3}/
             },
             presence: true
 
