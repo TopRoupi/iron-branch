@@ -9,11 +9,11 @@
         = octicon "mark-github", :height => 18 
         |  Github
 
+
+
 .card.bg-light
-  .card-header.text-center Latest pages visited
+  .card-header.text-center Patch notes
   .card-body.text-center
-    - session[:history].reverse_each do |url|
-      = link_to url, url
-      br
+    = simple_format `git log --format=format:'%cd\n%s\n\n' --date=human -n 5`
 br
 br
