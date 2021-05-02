@@ -1,4 +1,6 @@
-require 'test_helper'
+# frozen_string_literal: true
+
+require "test_helper"
 
 class InvestmentsControllerTest < ActionDispatch::IntegrationTest
   setup do
@@ -15,8 +17,8 @@ class InvestmentsControllerTest < ActionDispatch::IntegrationTest
   end
 
   test "should create investment" do
-    assert_difference('Investment.count') do
-      post investments_url, params: { investment: { anomalous: @investment.anomalous, invested_id: @investment.invested_id, investment_date: @investment.investment_date, investor_id: @investment.investor_id, funds: @investment.funds, value: @investment.value } }
+    assert_difference("Investment.count") do
+      post investments_url, params: {investment: {anomalous: @investment.anomalous, invested_id: @investment.invested_id, investment_date: @investment.investment_date, investor_id: @investment.investor_id, funds: @investment.funds, value: @investment.value}}
     end
 
     assert_redirected_to investment_url(Investment.last)
@@ -28,7 +30,7 @@ class InvestmentsControllerTest < ActionDispatch::IntegrationTest
   end
 
   test "should destroy investment" do
-    assert_difference('Investment.count', -1) do
+    assert_difference("Investment.count", -1) do
       delete investment_url(@investment)
     end
 

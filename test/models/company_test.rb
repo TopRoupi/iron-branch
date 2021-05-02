@@ -1,23 +1,25 @@
-require 'test_helper'
+# frozen_string_literal: true
+
+require "test_helper"
 
 class CompanyTest < ActiveSupport::TestCase
   setup do
     @company = create :company
   end
-    
-  test '#have_anomalies? should return false if dont have any investments with anomalous true' do
+
+  test "#have_anomalies? should return false if dont have any investments with anomalous true" do
     create :investment, investor: @company
 
     refute(@company.have_anomalies?)
   end
 
-  test '#have_anomalies? should return true if do have any investments with anomalous true' do
+  test "#have_anomalies? should return true if do have any investments with anomalous true" do
     create :investment, investor: @company, anomalous: true
 
     assert(@company.have_anomalies?)
   end
 
-  test '#invested_companies should return the list with the investors companies' do
+  test "#invested_companies should return the list with the investors companies" do
     invested_a = create :company
     invested_b = create :company
 
@@ -27,7 +29,7 @@ class CompanyTest < ActiveSupport::TestCase
     assert_includes(@company.invested_companies, invested_a, invested_b)
   end
 
-  test '#investors_companies should return the list with the investors companies' do
+  test "#investors_companies should return the list with the investors companies" do
     investor_a = create :company
     investor_b = create :company
 
@@ -37,7 +39,7 @@ class CompanyTest < ActiveSupport::TestCase
     assert_includes(@company.investors_companies, investor_a, investor_b)
   end
 
-  test '#unique_invested_companies_investments should return a list with the investments per company invested' do
+  test "#unique_invested_companies_investments should return a list with the investments per company invested" do
     invested_a = create :company
     invested_b = create :company
 
@@ -48,11 +50,11 @@ class CompanyTest < ActiveSupport::TestCase
     create :investment, investor: @company, invested: invested_b
 
     assert_includes(@company.unique_invested_companies_investments,
-                    @company.investments.where(invested: invested_a),
-                    @company.investments.where(invested: invested_b),)
+      @company.investments.where(invested: invested_a),
+      @company.investments.where(invested: invested_b))
   end
 
-  test '#unique_investor_companies_investments should return a list with the investments per investor company' do
+  test "#unique_investor_companies_investments should return a list with the investments per investor company" do
     investor_a = create :company
     investor_b = create :company
 
@@ -63,11 +65,11 @@ class CompanyTest < ActiveSupport::TestCase
     create :investment, investor: investor_b, invested: @company
 
     assert_includes(@company.unique_investor_companies_investments,
-                    @company.investors.where(investor: investor_a),
-                    @company.investors.where(investor: investor_b),)
+      @company.investors.where(investor: investor_a),
+      @company.investors.where(investor: investor_b))
   end
 
-  test '#total_capital should return the capital plus the sum of investors investments on the company' do
+  test "#total_capital should return the capital plus the sum of investors investments on the company" do
     @company.capital = 100
 
     create :investment, invested: @company, value: 50
@@ -76,8 +78,8 @@ class CompanyTest < ActiveSupport::TestCase
     assert_equal(@company.total_capital, 200)
   end
 
-  test '#participation_percentage_on should return the percentage of the participation on the invested company' do
-    invested =  create :company, capital: 500
+  test "#participation_percentage_on should return the percentage of the participation on the invested company" do
+    invested = create :company, capital: 500
 
     create :investment, investor: @company, invested: invested, value: 500
 
@@ -86,8 +88,8 @@ class CompanyTest < ActiveSupport::TestCase
     assert_equal(@company.participation_percentage_on(invested), 50.0)
   end
 
-  test '#participation_value_on should return the sum of the investments value on the invested company' do
-    invested =  create :company
+  test "#participation_value_on should return the sum of the investments value on the invested company" do
+    invested = create :company
 
     create :investment, investor: @company, invested: invested, value: 500
     create :investment, investor: @company, invested: invested, value: 500

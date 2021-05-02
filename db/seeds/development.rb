@@ -1,19 +1,21 @@
+# frozen_string_literal: true
+
 # direct and indirect participation tree
 # Company_A
 # ├─50%─>>>>> Company_B
 # ├─25%──────├─50%─>>>>> Company_C
 # ├─6.25%────├─25%───────├─50%─>>>>> Company_D
-# 
+#
 # just direct participation tree
 # Company_A
 # ├─50%─>>>>> Company_B
 # ├──────────├─50%─>>>>> Company_C
 # ├──────────├───────────├─50%─>>>>> Company_D
-# 
+#
 
 # a->b
 # a->b * (b->c/100), b->c
-# a->b * (b->c * (c->d)), b->c * (c->d/100), c->d 
+# a->b * (b->c * (c->d)), b->c * (c->d/100), c->d
 
 # name: 'company_a'
 # capital: 100
@@ -79,39 +81,39 @@
 # end
 
 company_a = FactoryBot.create :company,
-                              capital: 100,
-                              name: "Company_A"
+  capital: 100,
+  name: "Company_A"
 
 company_b = FactoryBot.create :company,
-                              capital: 100,
-                              name: "Company_B"
+  capital: 100,
+  name: "Company_B"
 
 company_c = FactoryBot.create :company,
-                              capital: 100,
-                              name: "Company_C"
+  capital: 100,
+  name: "Company_C"
 
 company_d = FactoryBot.create :company,
-                              capital: 100,
-                              name: "Company_D"
+  capital: 100,
+  name: "Company_D"
 
 FactoryBot.create :investment,
-                  investor: company_a,
-                  invested: company_b,
-                  value: 50
+  investor: company_a,
+  invested: company_b,
+  value: 50
 
 FactoryBot.create :investment,
-                  investor: company_b,
-                  invested: company_c,
-                  value: 50
+  investor: company_b,
+  invested: company_c,
+  value: 50
 
 FactoryBot.create :investment,
-                  investor: company_c,
-                  invested: company_d,
-                  value: 50
+  investor: company_c,
+  invested: company_d,
+  value: 50
 
 FactoryBot.create :investment,
-                  investor: company_d,
-                  invested: company_a,
-                  value: 50
+  investor: company_d,
+  invested: company_a,
+  value: 50
 
 # Company.generate_tree(1..1, 20)

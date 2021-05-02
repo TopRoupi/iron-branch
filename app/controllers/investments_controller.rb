@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class InvestmentsController < ApplicationController
   before_action :set_investment, only: [:show, :edit, :update, :destroy]
 
@@ -30,7 +32,7 @@ class InvestmentsController < ApplicationController
     respond_to do |format|
       if @investment.save
         session[:return_to] ||= @investment
-        format.html { redirect_to session.delete(:return_to), notice: 'Investment was successfully created.' }
+        format.html { redirect_to session.delete(:return_to), notice: "Investment was successfully created." }
         format.json { render :show, status: :created, location: @investment }
       else
         format.html { render :new }
@@ -44,19 +46,20 @@ class InvestmentsController < ApplicationController
   def destroy
     @investment.destroy
     respond_to do |format|
-      format.html { redirect_back fallback_location: root_path, notice: 'Investment was successfully destroyed.' }
+      format.html { redirect_back fallback_location: root_path, notice: "Investment was successfully destroyed." }
       format.json { head :no_content }
     end
   end
 
   private
-    # Use callbacks to share common setup or constraints between actions.
-    def set_investment
-      @investment = Investment.find(params[:id])
-    end
 
-    # Only allow a list of trusted parameters through.
-    def investment_params
-      params.require(:investment).permit(:investor_id, :invested_id, :value, :funds, :investment_date, :anomalous)
-    end
+  # Use callbacks to share common setup or constraints between actions.
+  def set_investment
+    @investment = Investment.find(params[:id])
+  end
+
+  # Only allow a list of trusted parameters through.
+  def investment_params
+    params.require(:investment).permit(:investor_id, :invested_id, :value, :funds, :investment_date, :anomalous)
+  end
 end
