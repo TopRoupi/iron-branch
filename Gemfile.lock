@@ -259,6 +259,8 @@ GEM
       thread_safe (~> 0.1)
     validates_cnpj (2.0.1)
       activemodel
+    view_component (2.24.0)
+      activesupport (>= 5.0.0, < 7.0)
     web-console (4.0.2)
       actionview (>= 6.0.0)
       activemodel (>= 6.0.0)
@@ -313,6 +315,7 @@ DEPENDENCIES
   turbolinks (~> 5)
   tzinfo-data
   validates_cnpj
+  view_component
   web-console (>= 3.3.0)
   webdrivers
   webpacker (~> 4.0)

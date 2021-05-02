@@ -36,7 +36,7 @@ class Company < ApplicationRecord
 
   validates :last_capital_modification,
             presence: true
-            
+
   validates :telephone, 
             format: {
               with: /(^|\()?\s*(\d{2})\s*(\s|\))*(9?\d{4})(\s|-)?(\d{4})($|\n)/
@@ -120,10 +120,10 @@ class Company < ApplicationRecord
 
     result.map! do |investments|
       investor = investments[0].investor
-      
+
       [investor.all_investors, investor]
     end
-    
+
     result.flatten
   end
 
@@ -136,10 +136,10 @@ class Company < ApplicationRecord
 
     result.map! do |investments|
       invested = investments[0].invested
-      
+
       [invested.all_investeds, invested]
     end
-    
+
     result.flatten
   end
 
@@ -151,7 +151,7 @@ class Company < ApplicationRecord
 
   def investors_anomalies_count
     count = have_investors_anomalies? ? 1 : 0
-    
+
     count + all_investors.map{ |comp| comp.have_investors_anomalies? }.count(true)
   end
 end
