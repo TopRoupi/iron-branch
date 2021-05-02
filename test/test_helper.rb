@@ -9,9 +9,9 @@ require "minitest/reporters"
 require "shoulda/context"
 
 class ActiveSupport::TestCase
-  # parallelize(workers: :number_of_processors)
+  parallelize(workers: :number_of_processors)
 
   include FactoryBot::Syntax::Methods
 end
 
-Minitest::Reporters.use! Minitest::Reporters::SpecReporter.new # spec-like progress
+# Minitest::Reporters.use! Minitest::Reporters::SpecReporter.new # spec-like progress

@@ -18,6 +18,7 @@ class CompaniesControllerTest < ActionDispatch::IntegrationTest
   end
 
   test "should create company" do
+    @company = build :company
     assert_difference("Company.count") do
       post companies_url, params: {company: {capital: @company.capital, cep: @company.cep, cnpj: @company.cnpj, email: @company.email, last_capital_modification: @company.last_capital_modification, name: @company.name, status: @company.status, telephone: @company.telephone, constitution: @company.constitution}}
     end

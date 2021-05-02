@@ -156,4 +156,18 @@ class Company < ApplicationRecord
 
     count + all_investors.map { |comp| comp.have_investors_anomalies? }.count(true)
   end
+
+  def investments_matrix
+    result = []
+    result << [self]
+
+    loop do
+      company_investments = result[-1].flat_map { |c| c.investments.to_a }
+      break if company_investments.blank?
+      result << company_investments
+      result << result[-1].map { |i| i.invested }
+    end
+
+    result
+  end
 end

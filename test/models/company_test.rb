@@ -14,7 +14,10 @@ class CompanyTest < ActiveSupport::TestCase
   end
 
   test "#have_anomalies? should return true if do have any investments with anomalous true" do
-    create :investment, investor: @company, anomalous: true
+    invested = create :company
+
+    create :investment, investor: invested, invested: @company
+    create :investment, investor: @company, invested: invested, anomalous: true
 
     assert(@company.have_anomalies?)
   end
@@ -122,5 +125,36 @@ class CompanyTest < ActiveSupport::TestCase
 
     assert_includes(@company.all_investors, investor_a, investor_b)
     refute_includes(@company.all_investors, not_an_investor)
+  end
+
+  test "#investments_matrix should return the company's investments tree matrix" do
+    invested_a = create :company
+    invested_b = create :company
+    indirect_invested = create :company
+
+    investment_a = create :investment, investor: @company, invested: invested_a
+    investment_b = create :investment, investor: @company, invested: invested_b
+    indirect_investment = create :investment, investor: invested_a, invested: indirect_invested
+
+    expected_out = [
+      [@company],
+      [investment_a, investment_b],
+      [invested_a, invested_b],
+      [indirect_investment],
+      [indirect_invested]
+    ]
+
+    # ivestment tree
+    #
+    #      c
+    #      |
+    #    -----
+    #    |   |
+    #    a   b
+    #    |
+    #    |
+    #    d
+
+    assert_equal @company.investments_matrix, expected_out
   end
 end
