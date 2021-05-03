@@ -171,20 +171,13 @@ class Company < ApplicationRecord
       companies = []
       result[-1].each do |i|
         company = i.invested
-        tree_companies[company.id] =
-          if tree_companies[company.id].nil?
-            1
-          else
-            tree_companies[company.id] + 1
-          end
-        companies << company unless tree_companies[company.id] > 2
+        tree_companies = if tree_companies[company.id].nil?
+                           1
+                         else
+                           tree_companies[company.id] + 1
+                         end
       end
-
-      break if companies.blank?
-
-      result << companies
-
-      break if tree_companies.reject { |k, v| v == 1 || !companies.map { |c| c.id }.any?(k) }.any?
+      result << 
     end
 
     result

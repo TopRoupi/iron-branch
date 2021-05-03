@@ -144,7 +144,7 @@ class CompanyTest < ActiveSupport::TestCase
       [indirect_invested]
     ]
 
-    # ivestment tree
+    # investment tree
     #
     #      c
     #      |
@@ -154,6 +154,35 @@ class CompanyTest < ActiveSupport::TestCase
     #    |
     #    |
     #    d
+
+    assert_equal @company.investments_matrix, expected_out
+  end
+
+  test "#investments_matrix should work even with circular trees" do
+    invested_a = create :company
+
+    investment_a = create :investment, investor: @company, invested: invested_a
+    circular_investment = create :investment, investor: invested_a, invested: @company, anomalous: true
+
+    expected_out = [
+      [@company],
+      [investment_a],
+      [invested_a],
+      [circular_investment],
+      [@company]
+    ]
+
+    # investment tree
+    #
+    #       a
+    #       |
+    #       -
+    #       |
+    #       b
+    #       |
+    #       -
+    #       |
+    #       a
 
     assert_equal @company.investments_matrix, expected_out
   end

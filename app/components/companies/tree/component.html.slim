@@ -1,2 +1,12 @@
 -# frozen_string_literal: true
-div test(
+
+style
+  | .w100 {
+  |   width: 100px;
+  | }
+
+- (0..@matrix.length).step(2).each do |i|
+  .d-flex.justify-content-center
+    - @matrix[i].each do |company|
+      .bg-secondary.w100
+        = company.name
